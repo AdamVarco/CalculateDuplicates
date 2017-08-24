@@ -9,13 +9,13 @@ import java.util.Scanner;
 
 public class CountDuplicates {
 	static int countWords = 0;
-	static ArrayList<String> arList = new ArrayList<String>();
+	static String arList = new String();
 	static int charCount = 0;
 	static void countEachWords(String fileName, Map<String, Integer> words) throws FileNotFoundException {
 		Scanner file = new Scanner(new File(fileName));
 		while (file.hasNext()) {
            String word = file.next().toUpperCase();
-           arList.add(word);
+           arList+=word;
 			String rid = word.replaceAll("[^a-zA-Z0-9]", "");
 			Integer count = words.get(rid);
 			if (count != null)
@@ -45,11 +45,8 @@ public class CountDuplicates {
 			System.out.println(entry.getKey()+ " has " + entry.getValue() + " " +oc);
 		}
 		System.out.println("The total amount of words in the file is " + countWords);
-		String f = new String();
-		for(String s : arList) {
-			f+=s;
-		}
-		for(int i =0; i<f.length(); i++) {
+		
+		for(int i =0; i<arList.length(); i++) {
 			charCount++;
 		}
 		System.out.println("Number of characters in the file is " +charCount);
